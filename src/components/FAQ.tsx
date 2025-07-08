@@ -101,7 +101,7 @@ export const FAQ = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              See if your a fit
+              Contact
             </a>
           </Button>
         </div>
