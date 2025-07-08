@@ -45,9 +45,7 @@ export const Hero = () => {
                 AI Employee
               </span>
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Vantum AI doesn't just answer calls or chat. It thinks, learns, and integrates into your business like a real team member—handling complex tasks, making decisions, and growing with your company.
-            </p>
+            <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">Turn Missed Calls Into Booked Appointments — With an AI Receptionist That Works 24/7</p>
           </div>
           
           {/* CTA Button */}
