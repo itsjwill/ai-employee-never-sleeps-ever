@@ -61,7 +61,7 @@ export const CallToAction = () => {
               <div className="text-purple-300">Free Trial</div>
               <div className="text-gray-400 text-sm mt-2">No credit card required</div>
             </div>
-            <div className="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50">
+            <div className="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 text-center">
               <div className="text-3xl font-bold text-white mb-2">24/7</div>
               <div className="text-cyan-300">Support</div>
               <div className="text-gray-400 text-sm mt-2">Dedicated success team</div>
