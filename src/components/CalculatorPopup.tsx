@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Calculator, X } from "lucide-react";
 
 interface CalculatorPopupProps {
@@ -12,11 +12,16 @@ export const CalculatorPopup = ({ onClose }: CalculatorPopupProps) => {
 
   useEffect(() => {
     // Show popup after a short delay when component mounts
+    console.log('CalculatorPopup: Component mounted, starting timer...');
     const timer = setTimeout(() => {
+      console.log('CalculatorPopup: Timer fired, showing popup');
       setIsOpen(true);
-    }, 2000);
+    }, 1000);
 
-    return () => clearTimeout(timer);
+    return () => {
+      console.log('CalculatorPopup: Cleanup timer');
+      clearTimeout(timer);
+    };
   }, []);
 
   const handleGoToCalculator = () => {
@@ -34,10 +39,10 @@ export const CalculatorPopup = ({ onClose }: CalculatorPopupProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="max-w-md bg-slate-800/95 border-blue-500/20 backdrop-blur-md relative">
+      <DialogContent className="max-w-md bg-slate-800/95 border-blue-500/20 backdrop-blur-md relative z-[100] animate-fade-in">
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+          className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10"
         >
           <X className="w-5 h-5" />
         </button>
@@ -47,12 +52,12 @@ export const CalculatorPopup = ({ onClose }: CalculatorPopupProps) => {
             <Calculator className="w-5 h-5 text-blue-400" />
             <span>Free Revenue Audit</span>
           </DialogTitle>
+          <DialogDescription className="text-gray-300">
+            Discover how much revenue your practice might be losing from missed calls with our free calculator.
+          </DialogDescription>
         </DialogHeader>
         
         <div className="space-y-4">
-          <p className="text-gray-300">
-            Discover how much revenue your practice might be losing from missed calls with our free calculator.
-          </p>
           
           <div className="flex flex-col space-y-3">
             <Button 
