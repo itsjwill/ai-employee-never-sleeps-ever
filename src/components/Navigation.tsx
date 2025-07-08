@@ -30,6 +30,11 @@ export const Navigation = () => {
             <a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors">How It Works</a>
             <a href="#pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</a>
             <a href="#faq" className="text-gray-300 hover:text-white transition-colors">FAQ</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScVpGDYem7-awVEnevrcNY_YnuU3gAy3nwH73QtEGRJynh_MA/viewform?usp=sharing&ouid=104084549135784044791" target="_blank" rel="noopener noreferrer">
+              <Button className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white">
+                Sign Up
+              </Button>
+            </a>
             <a href="https://dashboard.vantumai.com/login" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" className="border-blue-500 text-blue-300 hover:bg-blue-500 hover:text-white">
                 Log In
@@ -57,6 +62,11 @@ export const Navigation = () => {
             <a href="#pricing" className="block text-gray-300 hover:text-white transition-colors">Pricing</a>
             <a href="#faq" className="block text-gray-300 hover:text-white transition-colors">FAQ</a>
             <div className="flex flex-col space-y-2 pt-4">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLScVpGDYem7-awVEnevrcNY_YnuU3gAy3nwH73QtEGRJynh_MA/viewform?usp=sharing&ouid=104084549135784044791" target="_blank" rel="noopener noreferrer">
+                <Button className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white w-full">
+                  Sign Up
+                </Button>
+              </a>
               <a href="https://dashboard.vantumai.com/login" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" className="border-blue-500 text-blue-300 hover:bg-blue-500 hover:text-white w-full">
                   Log In
