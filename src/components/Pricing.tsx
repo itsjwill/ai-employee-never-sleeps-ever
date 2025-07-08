@@ -19,7 +19,7 @@ export const Pricing = () => {
         <div className="text-center mb-20">
           <div className="inline-flex items-center space-x-2 bg-green-500/20 border border-green-500/30 rounded-full px-6 py-2 mb-8">
             <Crown className="w-4 h-4 text-green-300" />
-            <span className="text-green-200 text-sm font-medium">Transparent Pricing</span>
+            
           </div>
           
           <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6">
