@@ -107,7 +107,18 @@ export const HowItWorks = () => {
             <p className="text-gray-300 mb-8 text-lg">
               Join thousands of companies already transforming their operations with Vantum AI.
             </p>
-            <Button className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white text-lg px-12 py-4 rounded-full shadow-xl hover:scale-105 transition-all duration-300">Ready to Upgrade your business ?</Button>
+            <Button 
+              asChild
+              className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white text-lg px-12 py-4 rounded-full shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              <a 
+                href="https://docs.google.com/forms/d/e/1FAIpQLScVpGDYem7-awVEnevrcNY_YnuU3gAy3nwH73QtEGRJynh_MA/viewform?usp=sharing&ouid=104084549135784044791"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ready to Upgrade your business ?
+              </a>
+            </Button>
           </div>
         </div>
       </div>
