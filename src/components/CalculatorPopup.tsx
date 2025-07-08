@@ -34,7 +34,14 @@ export const CalculatorPopup = ({ onClose }: CalculatorPopupProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="max-w-md bg-slate-800/95 border-blue-500/20 backdrop-blur-md">
+      <DialogContent className="max-w-md bg-slate-800/95 border-blue-500/20 backdrop-blur-md relative">
+        <button
+          onClick={handleClose}
+          className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors"
+        >
+          <X className="w-5 h-5" />
+        </button>
+        
         <DialogHeader>
           <DialogTitle className="flex items-center space-x-2 text-white">
             <Calculator className="w-5 h-5 text-blue-400" />
@@ -59,7 +66,7 @@ export const CalculatorPopup = ({ onClose }: CalculatorPopupProps) => {
             <Button 
               variant="outline" 
               onClick={handleClose}
-              className="border-gray-600 text-gray-300 hover:bg-gray-700"
+              className="border-gray-600 text-black hover:bg-gray-700 hover:text-black bg-white"
             >
               Maybe Later
             </Button>
