@@ -58,6 +58,13 @@ export const Hero = () => {
             </Button>
           </div>
           
+          {/* Revenue recovery message */}
+          <div className="text-center pt-6">
+            <p className="text-lg text-blue-200 font-medium max-w-3xl mx-auto">
+              Our clients recover $5,000–$30,000/month in lost revenue by answering every call, booking every lead, and never missing another patient
+            </p>
+          </div>
+          
           {/* Trust indicators */}
           <div className="flex flex-wrap justify-center items-center gap-8 text-sm text-gray-400 pt-8">
             <div className="flex items-center space-x-2">
