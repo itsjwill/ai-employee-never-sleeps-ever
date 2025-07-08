@@ -69,7 +69,7 @@ export const Features = () => {
           <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6">
             What You Get with VantumAI — and Why It Works
             <span className="block bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              True Intelligence.
+              Save Cost While Increasing Profit
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
