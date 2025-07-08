@@ -95,8 +95,14 @@ export const FAQ = () => {
 
         <div className="text-center mt-12">
           <p className="text-gray-400 mb-4">Still have questions?</p>
-          <Button className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white px-8 py-3 rounded-full">
-            Contact Our Team
+          <Button asChild className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white px-8 py-3 rounded-full">
+            <a 
+              href="https://docs.google.com/forms/d/e/1FAIpQLScVpGDYem7-awVEnevrcNY_YnuU3gAy3nwH73QtEGRJynh_MA/viewform?usp=sharing&ouid=104084549135784044791"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Contact Our Team
+            </a>
           </Button>
         </div>
       </div>
