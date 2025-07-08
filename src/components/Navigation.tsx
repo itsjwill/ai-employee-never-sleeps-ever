@@ -25,6 +25,7 @@ export const Navigation = () => {
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
+            <a href="#calculator-section" className="text-gray-300 hover:text-white transition-colors">Calculator</a>
             <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
             <a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors">How It Works</a>
             <a href="#pricing" className="text-gray-300 hover:text-white transition-colors">Pricing</a>
@@ -50,6 +51,7 @@ export const Navigation = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden bg-slate-800/95 backdrop-blur-md rounded-lg mt-2 p-4 space-y-4">
+            <a href="#calculator-section" className="block text-gray-300 hover:text-white transition-colors">Calculator</a>
             <a href="#features" className="block text-gray-300 hover:text-white transition-colors">Features</a>
             <a href="#how-it-works" className="block text-gray-300 hover:text-white transition-colors">How It Works</a>
             <a href="#pricing" className="block text-gray-300 hover:text-white transition-colors">Pricing</a>

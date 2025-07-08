@@ -9,13 +9,17 @@ import { CallToAction } from "@/components/CallToAction";
 import { Footer } from "@/components/Footer";
 import { Navigation } from "@/components/Navigation";
 import { RevenueCalculator } from "@/components/RevenueCalculator";
+import { CalculatorPopup } from "@/components/CalculatorPopup";
+import { useState } from "react";
 
 const Index = () => {
+  const [showPopup, setShowPopup] = useState(true);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
       <Navigation />
       <Hero />
-      <section className="py-16 px-4">
+      <section id="calculator-section" className="py-16 px-4">
         <RevenueCalculator />
       </section>
       <TrustBar />
@@ -25,6 +29,8 @@ const Index = () => {
       <FAQ />
       <CallToAction />
       <Footer />
+      
+      {showPopup && <CalculatorPopup onClose={() => setShowPopup(false)} />}
     </div>
   );
 };
