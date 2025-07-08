@@ -5,42 +5,6 @@ import { Check, Zap, Crown, Rocket } from "lucide-react";
 
 const plans = [
   {
-    name: "Starter",
-    price: "299",
-    period: "month",
-    description: "Perfect for small teams getting started with AI employees",
-    icon: Zap,
-    gradient: "from-cyan-500 to-blue-500",
-    features: [
-      "1 AI Employee",
-      "Basic task automation",
-      "Email & chat integration",
-      "Standard analytics",
-      "Community support",
-      "Up to 1,000 interactions/month"
-    ],
-    popular: false
-  },
-  {
-    name: "Professional",
-    price: "799",
-    period: "month", 
-    description: "For growing businesses that need advanced AI capabilities",
-    icon: Crown,
-    gradient: "from-purple-500 to-pink-500",
-    features: [
-      "3 AI Employees",
-      "Advanced decision making",
-      "Full CRM integration",
-      "Advanced analytics & insights",
-      "Priority support",
-      "Up to 10,000 interactions/month",
-      "Custom workflows",
-      "API access"
-    ],
-    popular: true
-  },
-  {
     name: "Enterprise",
     price: "Custom",
     period: "month",
@@ -85,7 +49,7 @@ export const Pricing = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        <div className="flex justify-center mb-16">
           {plans.map((plan, index) => (
             <Card 
               key={plan.name}
