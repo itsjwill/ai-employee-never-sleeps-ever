@@ -38,11 +38,7 @@ export const CallToAction = () => {
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Button size="lg" className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white text-xl px-16 py-8 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 hover:shadow-purple-500/25">
-              <Zap className="mr-3 w-6 h-6" />
-              Start Your Free Trial
-              <ArrowRight className="ml-3 w-6 h-6" />
-            </Button>
+            
             <Button variant="outline" size="lg" className="border-2 border-purple-400/50 text-purple-300 hover:bg-purple-500/20 text-xl px-16 py-8 rounded-full backdrop-blur-sm hover:scale-105 transition-all duration-300">
               Schedule a Demo
             </Button>
