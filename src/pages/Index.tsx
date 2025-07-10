@@ -10,6 +10,7 @@ import { Footer } from "@/components/Footer";
 import { Navigation } from "@/components/Navigation";
 import { RevenueCalculator } from "@/components/RevenueCalculator";
 import { CalculatorPopup } from "@/components/CalculatorPopup";
+import { TalkToAgent } from "@/components/TalkToAgent";
 import { useState } from "react";
 
 const Index = () => {
@@ -22,6 +23,7 @@ const Index = () => {
       <section id="calculator-section" className="py-16 px-4">
         <RevenueCalculator />
       </section>
+      <TalkToAgent />
       <TrustBar />
       <Features />
       <HowItWorks />
