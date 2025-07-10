@@ -34,7 +34,7 @@ export const Hero = () => {
         <div className="flex justify-center mb-8">
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-full p-1 border border-blue-500/20">
             <a 
-              href="#contact" 
+              href="#talk-to-agent" 
               className="inline-flex items-center px-6 py-2 rounded-full bg-blue-500 text-white text-sm font-medium hover:bg-blue-600 transition-colors duration-200"
             >
               Talk To Agent
@@ -97,7 +97,7 @@ export const Hero = () => {
         animationDelay: '0.5s'
       }}>
           <div className="relative max-w-4xl mx-auto">
-            <div className="bg-slate-800/80 backdrop-blur-md shadow-2xl border border-blue-500/20 p-8 hover:scale-105 transition-all duration-500 px-[32px] py-[16px] rounded-xl">
+            <div className="bg-slate-800/80 backdrop-blur-md shadow-2xl border border-blue-500/20 p-8 hover:scale-105 transition-all duration-500 px-[32px] py-[16px] rounded-xl" id="talk-to-agent">
               <iframe src="https://dashboard.vantumai.com/iframe/686c36009edd0f0a4b4a419d" style={{
               width: '100%',
               height: '100vh'
