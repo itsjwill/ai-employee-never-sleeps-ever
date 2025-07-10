@@ -30,6 +30,18 @@ export const Hero = () => {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Tab Navigation */}
+        <div className="flex justify-center mb-8">
+          <div className="bg-slate-800/50 backdrop-blur-sm rounded-full p-1 border border-blue-500/20">
+            <a 
+              href="#contact" 
+              className="inline-flex items-center px-6 py-2 rounded-full bg-blue-500 text-white text-sm font-medium hover:bg-blue-600 transition-colors duration-200"
+            >
+              Talk To Agent
+            </a>
+          </div>
+        </div>
+        
         <div className="space-y-8 animate-fade-in">
           {/* Badge */}
           <div className="inline-flex items-center space-x-2 bg-blue-500/20 border border-blue-500/30 rounded-full px-6 py-2 backdrop-blur-sm">
