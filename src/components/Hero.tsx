@@ -99,17 +99,11 @@ export const Hero = () => {
           <div className="relative max-w-4xl mx-auto">
             <div className="bg-slate-800/80 backdrop-blur-md shadow-2xl border border-blue-500/20 p-8 hover:scale-105 transition-all duration-500 px-[32px] py-[16px] rounded-xl" id="talk-to-agent">
               <div className="relative">
-                <iframe 
-                  src="https://dashboard.vantumai.com/iframe/686c36009edd0f0a4b4a419d" 
-                  style={{
-                    width: '100%',
-                    height: '600px'
-                  }} 
-                  frameBorder="0" 
+                <iframe
+                  src="https://dashboard.vantumai.com/iframe/686c36009edd0f0a4b4a419d"
+                  style={{ width: '100%', height: '100vh' }}
+                  frameBorder="0"
                   allow="microphone"
-                  onError={(e) => {
-                    console.error('Iframe failed to load:', e);
-                  }}
                 />
                 <div className="absolute inset-0 flex items-center justify-center bg-slate-800/90 backdrop-blur-md rounded-lg" id="iframe-fallback" style={{ display: 'none' }}>
                   <div className="text-center">
