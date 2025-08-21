@@ -1,26 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Mic, Sparkles } from "lucide-react";
-import { useEffect, useState } from "react";
-
+import { Mic, Sparkles, Brain } from "lucide-react";
 export const Hero = () => {
-  const [iframeLoaded, setIframeLoaded] = useState(false);
-  const [iframeError, setIframeError] = useState(false);
-
-  useEffect(() => {
-    // Add debugging for iframe loading
-    const iframe = document.querySelector('#chat-iframe') as HTMLIFrameElement;
-    if (iframe) {
-      iframe.onload = () => {
-        console.log('Chat iframe loaded successfully');
-        setIframeLoaded(true);
-      };
-      iframe.onerror = () => {
-        console.error('Chat iframe failed to load');
-        setIframeError(true);
-      };
-    }
-  }, []);
-
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated wave background */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -119,40 +99,22 @@ export const Hero = () => {
           <div className="relative max-w-4xl mx-auto">
             <div className="bg-slate-800/80 backdrop-blur-md shadow-2xl border border-blue-500/20 p-8 hover:scale-105 transition-all duration-500 px-[32px] py-[16px] rounded-xl" id="talk-to-agent">
               <div className="relative">
-                {iframeError ? (
-                  <div className="flex items-center justify-center h-[600px] text-white">
-                    <div className="text-center">
-                      <p className="text-lg mb-4">Chat widget temporarily unavailable</p>
-                      <Button 
-                        onClick={() => window.open('https://dashboard.vantumai.com/prototype/686c36009edd0f0a4b4a419d', '_blank')}
-                        className="bg-blue-500 hover:bg-blue-600"
-                      >
-                        Open Chat in New Window
-                      </Button>
-                    </div>
+                <iframe
+                  src="https://dashboard.vantumai.com/iframe/686c36009edd0f0a4b4a419d"
+                  style={{ width: '100%', height: '100vh' }}
+                  frameBorder="0"
+                  allow="microphone"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-slate-800/90 backdrop-blur-md rounded-lg" id="iframe-fallback" style={{ display: 'none' }}>
+                  <div className="text-center">
+                    <Brain className="w-12 h-12 text-blue-400 mx-auto mb-4" />
+                    <h3 className="text-xl font-semibold text-white mb-2">AI Agent Currently Unavailable</h3>
+                    <p className="text-gray-300 mb-4">Please check your connection or contact support.</p>
+                    <Button variant="outline" className="text-blue-400 border-blue-400 hover:bg-blue-400/10">
+                      Retry Connection
+                    </Button>
                   </div>
-                ) : (
-                  <>
-                    {!iframeLoaded && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-slate-800/80 rounded-xl">
-                        <div className="text-white text-center">
-                          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-4"></div>
-                          <p>Loading AI Assistant...</p>
-                        </div>
-                      </div>
-                    )}
-                    <iframe
-                      id="chat-iframe"
-                      src="https://dashboard.vantumai.com/prototype/686c36009edd0f0a4b4a419d"
-                      className="w-full h-[600px] rounded-lg"
-                      frameBorder="0"
-                      allow="microphone; camera; autoplay; encrypted-media; fullscreen"
-                      sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"
-                      loading="lazy"
-                      title="AI Chat Assistant"
-                    />
-                  </>
-                )}
+                </div>
               </div>
             </div>
           </div>
