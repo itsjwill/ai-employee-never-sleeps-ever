@@ -14,15 +14,25 @@ export const Hero = () => {
   useEffect(() => {
     if (window.chatWidgetScriptLoaded) return;
     
+    console.log('Initializing chat widget...');
+    
     window.ChatWidgetConfig = {
-      projectId: "686c36009edd0f0a4b4a419d", 
+      projectId: "686c36009edd0f0a4b4a419d"
     };
 
     const chatWidgetScript = document.createElement("script");
     chatWidgetScript.type = 'text/javascript';
     chatWidgetScript.src = "https://storage.googleapis.com/cdwidget/dist/assets/js/main.js";
+    
+    chatWidgetScript.onload = () => {
+      console.log('Chat widget script loaded successfully');
+    };
+    
+    chatWidgetScript.onerror = (error) => {
+      console.error('Failed to load chat widget script:', error);
+    };
+    
     document.body.appendChild(chatWidgetScript);
-
     window.chatWidgetScriptLoaded = true;
   }, []);
 
@@ -125,12 +135,6 @@ export const Hero = () => {
             <div className="bg-slate-800/80 backdrop-blur-md shadow-2xl border border-blue-500/20 p-8 hover:scale-105 transition-all duration-500 px-[32px] py-[16px] rounded-xl" id="talk-to-agent">
               <div className="relative">
                 <div id="cd-widget"></div>
-                <iframe
-                  src="https://dashboard.vantumai.com/prototype/686c36009edd0f0a4b4a419d"
-                  style={{ width: '100%', height: '600px', marginTop: '20px' }}
-                  frameBorder="0"
-                  allow="microphone"
-                />
               </div>
             </div>
           </div>
