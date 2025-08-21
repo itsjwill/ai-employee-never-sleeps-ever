@@ -1,29 +1,24 @@
 import { Button } from "@/components/ui/button";
-import { Mic, Sparkles, Brain } from "lucide-react";
-import { useEffect } from "react";
+import { Mic, Sparkles } from "lucide-react";
+import { useEffect, useState } from "react";
 
-declare global {
-  interface Window {
-    chatWidgetScriptLoaded?: boolean;
-    ChatWidgetConfig?: {
-      projectId: string;
-    };
-  }
-}
 export const Hero = () => {
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [iframeError, setIframeError] = useState(false);
+
   useEffect(() => {
-    if (window.chatWidgetScriptLoaded) return;
-    
-    window.ChatWidgetConfig = {
-      projectId: "686c36009edd0f0a4b4a419d", 
-    };
-
-    const chatWidgetScript = document.createElement("script");
-    chatWidgetScript.type = 'text/javascript';
-    chatWidgetScript.src = "https://storage.googleapis.com/cdwidget/dist/assets/js/main.js";
-    document.body.appendChild(chatWidgetScript);
-
-    window.chatWidgetScriptLoaded = true;
+    // Add debugging for iframe loading
+    const iframe = document.querySelector('#chat-iframe') as HTMLIFrameElement;
+    if (iframe) {
+      iframe.onload = () => {
+        console.log('Chat iframe loaded successfully');
+        setIframeLoaded(true);
+      };
+      iframe.onerror = () => {
+        console.error('Chat iframe failed to load');
+        setIframeError(true);
+      };
+    }
   }, []);
 
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -124,13 +119,40 @@ export const Hero = () => {
           <div className="relative max-w-4xl mx-auto">
             <div className="bg-slate-800/80 backdrop-blur-md shadow-2xl border border-blue-500/20 p-8 hover:scale-105 transition-all duration-500 px-[32px] py-[16px] rounded-xl" id="talk-to-agent">
               <div className="relative">
-                <div id="cd-widget"></div>
-                <iframe
-                  src="https://dashboard.vantumai.com/prototype/686c36009edd0f0a4b4a419d"
-                  style={{ width: '100%', height: '600px', marginTop: '20px' }}
-                  frameBorder="0"
-                  allow="microphone"
-                />
+                {iframeError ? (
+                  <div className="flex items-center justify-center h-[600px] text-white">
+                    <div className="text-center">
+                      <p className="text-lg mb-4">Chat widget temporarily unavailable</p>
+                      <Button 
+                        onClick={() => window.open('https://dashboard.vantumai.com/prototype/686c36009edd0f0a4b4a419d', '_blank')}
+                        className="bg-blue-500 hover:bg-blue-600"
+                      >
+                        Open Chat in New Window
+                      </Button>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    {!iframeLoaded && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-slate-800/80 rounded-xl">
+                        <div className="text-white text-center">
+                          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-4"></div>
+                          <p>Loading AI Assistant...</p>
+                        </div>
+                      </div>
+                    )}
+                    <iframe
+                      id="chat-iframe"
+                      src="https://dashboard.vantumai.com/prototype/686c36009edd0f0a4b4a419d"
+                      className="w-full h-[600px] rounded-lg"
+                      frameBorder="0"
+                      allow="microphone; camera; autoplay; encrypted-media; fullscreen"
+                      sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"
+                      loading="lazy"
+                      title="AI Chat Assistant"
+                    />
+                  </>
+                )}
               </div>
             </div>
           </div>
