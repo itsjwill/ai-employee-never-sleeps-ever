@@ -7,6 +7,7 @@ declare global {
     chatWidgetScriptLoaded?: boolean;
     ChatWidgetConfig?: {
       projectId: string;
+      apiKey?: string;
     };
   }
 }
@@ -16,6 +17,7 @@ export const Hero = () => {
     
     window.ChatWidgetConfig = {
       projectId: "686c36009edd0f0a4b4a419d", 
+      apiKey: "CD.849f67ce4ef688c63b1a1b8d60b01d5a"
     };
 
     const chatWidgetScript = document.createElement("script");
