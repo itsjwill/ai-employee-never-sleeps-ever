@@ -1,21 +1,50 @@
 import { Button } from "@/components/ui/button";
 import { Mic, Sparkles, Brain } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+declare global {
+  interface Window {
+    chatWidgetScriptLoaded?: boolean;
+    ChatWidgetConfig?: {
+      projectId: string;
+    };
+  }
+}
 
 export const Hero = () => {
-  const [iframeLoading, setIframeLoading] = useState(true);
-  const [iframeError, setIframeError] = useState(false);
+  const [widgetLoading, setWidgetLoading] = useState(true);
+  const [widgetError, setWidgetError] = useState(false);
 
-  const handleIframeLoad = () => {
-    console.log('Chat widget iframe loaded successfully');
-    setIframeLoading(false);
-  };
+  useEffect(() => {
+    if (window.chatWidgetScriptLoaded) {
+      setWidgetLoading(false);
+      return;
+    }
+    
+    console.log('Initializing chat widget...');
+    
+    window.ChatWidgetConfig = {
+      projectId: "686c36009edd0f0a4b4a419d"
+    };
 
-  const handleIframeError = () => {
-    console.error('Failed to load chat widget iframe');
-    setIframeError(true);
-    setIframeLoading(false);
-  };
+    const chatWidgetScript = document.createElement("script");
+    chatWidgetScript.type = 'text/javascript';
+    chatWidgetScript.src = "https://storage.googleapis.com/cdwidget/dist/assets/js/main.js";
+    
+    chatWidgetScript.onload = () => {
+      console.log('Chat widget script loaded successfully');
+      setWidgetLoading(false);
+      window.chatWidgetScriptLoaded = true;
+    };
+    
+    chatWidgetScript.onerror = () => {
+      console.error('Failed to load chat widget script');
+      setWidgetError(true);
+      setWidgetLoading(false);
+    };
+    
+    document.body.appendChild(chatWidgetScript);
+  }, []);
 
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated wave background */}
@@ -115,15 +144,15 @@ export const Hero = () => {
           <div className="relative max-w-4xl mx-auto">
             <div className="bg-slate-800/80 backdrop-blur-md shadow-2xl border border-blue-500/20 p-8 hover:scale-105 transition-all duration-500 rounded-xl" id="talk-to-agent">
               <div className="relative min-h-[600px]">
-                {iframeLoading && (
+                {widgetLoading && (
                   <div className="flex flex-col items-center justify-center h-[600px] text-white">
                     <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-400 mb-4"></div>
                     <p className="text-lg">Loading AI Agent...</p>
-                    <p className="text-sm text-gray-400 mt-2">Connecting to chat widget</p>
+                    <p className="text-sm text-gray-400 mt-2">Initializing chat widget</p>
                   </div>
                 )}
                 
-                {iframeError && (
+                {widgetError && (
                   <div className="flex flex-col items-center justify-center h-[600px] text-white">
                     <div className="text-red-400 mb-4">
                       <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -135,16 +164,13 @@ export const Hero = () => {
                   </div>
                 )}
                 
-                <iframe
-                  src="https://dashboard.vantumai.com/iframe/686c36009edd0f0a4b4a419d"
-                  className="w-full h-[600px] rounded-lg border-0"
-                  allow="microphone"
-                  onLoad={handleIframeLoad}
-                  onError={handleIframeError}
+                <div 
+                  id="cd-widget" 
+                  className="w-full min-h-[600px]"
                   style={{ 
-                    display: iframeLoading || iframeError ? 'none' : 'block'
+                    display: widgetLoading || widgetError ? 'none' : 'block'
                   }}
-                />
+                ></div>
               </div>
             </div>
           </div>
