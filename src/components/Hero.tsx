@@ -13,7 +13,13 @@ declare global {
 
 export const Hero = () => {
   useEffect(() => {
-    if (window.chatWidgetScriptLoaded) return;
+    console.log('Hero component mounted, initializing widget...');
+    
+    if (window.chatWidgetScriptLoaded) {
+      console.log('Widget script already loaded');
+      return;
+    }
+    
     window.ChatWidgetConfig = {
       projectId: "686c36009edd0f0a4b4a419d", 
     };
@@ -24,6 +30,7 @@ export const Hero = () => {
     document.body.appendChild(chatWidgetScript);
 
     window.chatWidgetScriptLoaded = true;
+    console.log('Widget script added to DOM');
   }, []);
 
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
