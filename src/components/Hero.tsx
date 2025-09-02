@@ -1,24 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Mic, Sparkles, Brain } from "lucide-react";
 import { useEffect } from "react";
-
 export const Hero = () => {
   useEffect(() => {
     // Insert the script exactly as provided
     if ((window as any).chatWidgetScriptLoaded) return;
-    
     (window as any).ChatWidgetConfig = {
-      projectId: "686c36009edd0f0a4b4a419d", 
+      projectId: "686c36009edd0f0a4b4a419d"
     };
-
     var chatWidgetScript = document.createElement("script");
     chatWidgetScript.type = 'text/javascript';
     chatWidgetScript.src = "https://storage.googleapis.com/cdwidget/dist/assets/js/main.js";
     document.body.appendChild(chatWidgetScript);
-
     (window as any).chatWidgetScriptLoaded = true;
   }, []);
-
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated wave background */}
       <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -51,10 +46,7 @@ export const Hero = () => {
         {/* Tab Navigation */}
         <div className="flex justify-center mb-8">
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-full p-1 border border-blue-500/20">
-            <a 
-              href="#talk-to-agent" 
-              className="inline-flex items-center px-6 py-2 rounded-full bg-blue-500 text-white text-sm font-medium hover:bg-blue-600 transition-colors duration-200"
-            >
+            <a href="#talk-to-agent" className="inline-flex items-center px-6 py-2 rounded-full bg-blue-500 text-white text-sm font-medium hover:bg-blue-600 transition-colors duration-200">
               Talk To Agent
             </a>
           </div>
@@ -115,12 +107,9 @@ export const Hero = () => {
         animationDelay: '0.5s'
       }}>
           <div className="relative max-w-4xl mx-auto">
-            <div className="bg-slate-800/80 backdrop-blur-md shadow-2xl border border-blue-500/20 p-8 hover:scale-105 transition-all duration-500 rounded-xl" id="talk-to-agent">
+            <div id="talk-to-agent" className="bg-slate-800/80 backdrop-blur-md shadow-2xl border border-blue-500/20 p-8 hover:scale-105 transition-all duration-500 rounded-md">
               <div className="relative min-h-[600px]">
-                <div 
-                  id="cd-widget" 
-                  className="w-full min-h-[600px]"
-                ></div>
+                <div id="cd-widget" className="w-full min-h-[600px]"></div>
               </div>
             </div>
           </div>
