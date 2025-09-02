@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Mic, Sparkles, Brain } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 declare global {
   interface Window {
@@ -12,38 +12,18 @@ declare global {
 }
 
 export const Hero = () => {
-  const [widgetLoading, setWidgetLoading] = useState(true);
-  const [widgetError, setWidgetError] = useState(false);
-
   useEffect(() => {
-    if (window.chatWidgetScriptLoaded) {
-      setWidgetLoading(false);
-      return;
-    }
-    
-    console.log('Initializing chat widget...');
-    
+    if (window.chatWidgetScriptLoaded) return;
     window.ChatWidgetConfig = {
-      projectId: "686c36009edd0f0a4b4a419d"
+      projectId: "686c36009edd0f0a4b4a419d", 
     };
 
-    const chatWidgetScript = document.createElement("script");
+    var chatWidgetScript = document.createElement("script");
     chatWidgetScript.type = 'text/javascript';
     chatWidgetScript.src = "https://storage.googleapis.com/cdwidget/dist/assets/js/main.js";
-    
-    chatWidgetScript.onload = () => {
-      console.log('Chat widget script loaded successfully');
-      setWidgetLoading(false);
-      window.chatWidgetScriptLoaded = true;
-    };
-    
-    chatWidgetScript.onerror = () => {
-      console.error('Failed to load chat widget script');
-      setWidgetError(true);
-      setWidgetLoading(false);
-    };
-    
     document.body.appendChild(chatWidgetScript);
+
+    window.chatWidgetScriptLoaded = true;
   }, []);
 
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -144,32 +124,9 @@ export const Hero = () => {
           <div className="relative max-w-4xl mx-auto">
             <div className="bg-slate-800/80 backdrop-blur-md shadow-2xl border border-blue-500/20 p-8 hover:scale-105 transition-all duration-500 rounded-xl" id="talk-to-agent">
               <div className="relative min-h-[600px]">
-                {widgetLoading && (
-                  <div className="flex flex-col items-center justify-center h-[600px] text-white">
-                    <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-400 mb-4"></div>
-                    <p className="text-lg">Loading AI Agent...</p>
-                    <p className="text-sm text-gray-400 mt-2">Initializing chat widget</p>
-                  </div>
-                )}
-                
-                {widgetError && (
-                  <div className="flex flex-col items-center justify-center h-[600px] text-white">
-                    <div className="text-red-400 mb-4">
-                      <svg className="w-16 h-16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.982 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                      </svg>
-                    </div>
-                    <p className="text-lg mb-2">Failed to load AI Agent</p>
-                    <p className="text-sm text-gray-400">Please refresh the page to try again</p>
-                  </div>
-                )}
-                
                 <div 
                   id="cd-widget" 
                   className="w-full min-h-[600px]"
-                  style={{ 
-                    display: widgetLoading || widgetError ? 'none' : 'block'
-                  }}
                 ></div>
               </div>
             </div>
