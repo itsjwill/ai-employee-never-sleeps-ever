@@ -2,25 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Mic, Sparkles, Brain } from "lucide-react";
 import { useEffect } from "react";
 
-declare global {
-  interface Window {
-    chatWidgetScriptLoaded?: boolean;
-    ChatWidgetConfig?: {
-      projectId: string;
-    };
-  }
-}
-
 export const Hero = () => {
   useEffect(() => {
-    console.log('Hero component mounted, initializing widget...');
+    // Insert the script exactly as provided
+    if ((window as any).chatWidgetScriptLoaded) return;
     
-    if (window.chatWidgetScriptLoaded) {
-      console.log('Widget script already loaded');
-      return;
-    }
-    
-    window.ChatWidgetConfig = {
+    (window as any).ChatWidgetConfig = {
       projectId: "686c36009edd0f0a4b4a419d", 
     };
 
@@ -29,8 +16,7 @@ export const Hero = () => {
     chatWidgetScript.src = "https://storage.googleapis.com/cdwidget/dist/assets/js/main.js";
     document.body.appendChild(chatWidgetScript);
 
-    window.chatWidgetScriptLoaded = true;
-    console.log('Widget script added to DOM');
+    (window as any).chatWidgetScriptLoaded = true;
   }, []);
 
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
